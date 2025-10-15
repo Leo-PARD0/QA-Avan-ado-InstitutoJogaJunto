@@ -1,0 +1,28 @@
+{
+    "Cliente 1": {
+        "nome": "PAULA",
+        "sobrenome": "MARTINS",
+        "mes": "JANEIRO",
+        "valor": "500.00"
+    },
+        "Cliente 2": {
+        "nome": "LEONARDO",
+        "sobrenome": "EZEQUIEL",
+        "mes": "MARÇO",
+        "valor": "2000.00"
+    },
+        "Cliente 3": 
+        {
+        "nome": "RAFAEL",
+        "sobrenome": "CAMELO",
+        "mes": "AGOSTO",
+        "valor": "300.00"
+    },
+        "Cliente 4": 
+        {
+        "nome": "GABRIEL",
+        "sobrenome": "GUSTAVES",
+        "mes": "JULHO",
+        "valor": "30.00"
+    }
+}
