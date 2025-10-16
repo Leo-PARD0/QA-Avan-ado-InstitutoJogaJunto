@@ -1,9 +1,15 @@
 nome = input("Digite seu nome: ")
-nota1 = float(input("Digite a primeira nota: "))
-nota2 = float(input("Digite a segunda nota: "))
-nota3 = float(input("Digite a terceira nota: "))
-nota4 = float(input("Digite a quarta nota: "))
 
-media = float((nota1+nota2+nota3+nota4)/4)
+soma = 0
+quantidade = int(input("Digite a quantidade de notas: "))
 
-print(f"Olá, {nome}! Sua média é: {media: .1f}")
+for i in range(1, quantidade+1):
+    nota_data = str(input(f"Digite a {i}ª nota: "))
+    nota = float(nota_data.replace(",","."))
+    soma += nota
+
+media = soma / quantidade
+
+m = str(f"{media: .1f}")
+
+print(f"Olá, {nome}! Sua média é: {m.replace(".",",")}")
