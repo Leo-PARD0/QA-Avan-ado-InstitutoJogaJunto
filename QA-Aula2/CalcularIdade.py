@@ -2,7 +2,7 @@ nome_pet = str(input("Qual o nome do seu pet? "))
 idadeH = int(input("Quantos anos seu cachorro tem? "))
 idadeC = int(idadeH*7)
 
-porte = input("Qual o porte do seu cachorro: Grande (g), Médio (m) ou Pequeno (p)? ")
+porte = input("Qual o porte do seu cachorro: Grande (g), Médio (m) ou Pequeno (p)? ").lower()
 
 periodo = int(input("A quantos meses seu cachorro é atendido? "))
 banho = int(input("Quantos banhos ele tomou nesse período? "))
