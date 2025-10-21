@@ -1,18 +1,28 @@
-aluno = {"nome" : "Caique", "idade": 25, "cuso": "Python"}
-print(aluno["nome"])
+aluno = []
 
 nome = input("Digite seu nome: ")
 
-soma = 0
-quantidade = int(input("Digite a quantidade de notas: "))
+aluno.append(nome)
 
-for i in range(1, quantidade+1):
-    nota_data = str(input(f"Digite a {i}ª nota: "))
-    nota = float(nota_data.replace(",","."))
-    soma += nota
+sim = str(input("Deseja calcular sua média de notas? (S/N): "))
 
+while not sim.lower() == "s" and not sim.lower() == "n":
+    sim = input("Resposta inválida. Deseja calcular sua média de notas? (S/N): ")
+
+notas = []
+
+while sim.lower() == "s":
+    notas.append(float(input("Digite uma nota: ")))
+    sim = str(input("Deseja adicionar mais uma nota? (S/N): "))
+    if not sim.lower() == "s" or sim.lower() == "n":
+        while not sim.lower() == "s" and not sim.lower() == "n":
+            sim = input("Resposta inválida. Deseja adicionar mais uma nota? (S/N): ")
+
+soma = sum(notas)
+quantidade = len(notas)
 media = soma / quantidade
 
-m = str(f"{media: .1f}")
+aluno.append(media)
+aluno.append(notas)
 
-print(f"Olá, {nome}! Sua média é: {m.replace(".",",")}")
+print(f"Aluno: {aluno}")
