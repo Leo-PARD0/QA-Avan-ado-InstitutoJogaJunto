@@ -1,3 +1,6 @@
+aluno = {"nome" : "Caique", "idade": 25, "cuso": "Python"}
+print(aluno["nome"])
+
 nome = input("Digite seu nome: ")
 
 soma = 0

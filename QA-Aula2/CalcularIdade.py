@@ -13,19 +13,22 @@ print(debug)
 custo = 00.00
 valor = 00.00
 
-if porte == "g":
-    valor = 75.00
-    custo = 20.00
-elif porte == "m":
-    valor = 60.00
-    custo = 15.00
-elif porte == "p":
-    valor = 50.00
-    custo = 05.00
-else:
-    print ("Irmão, não entendi, tente escrever do jeito que está escrito.")
+match porte:
+    case "g":
+        valor = 75.00
+        custo = 20.00
+    case "m":
+        valor = 60.00
+        custo = 15.00
+    case "p":
+        valor = 50.00
+        custo = 05.00
+    case _:
+        print ("Irmão, não entendi, tente escrever do jeito que está escrito.")
 
 lucro = valor - custo
 lucro_periodo = lucro * periodo
 
-print(f"Olá, {nome_pet} tem {idadeC} anos em idade de cachorro e nos últimos {periodo} meses ele gerou: R$ {lucro_periodo}")
+mensagem = f"Olá, {nome_pet} tem {idadeC} anos em idade de cachorro e nos últimos {periodo} meses ele gerou: R$ {lucro_periodo}"
+
+print(mensagem)
