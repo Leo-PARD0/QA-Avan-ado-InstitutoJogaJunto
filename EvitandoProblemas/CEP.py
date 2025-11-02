@@ -2,15 +2,13 @@ import requests
 
 integrantes = { }
 
-continuar = True
-
-while continuar == True:
+while True:
     nome = input("Digite o nome do usuário: ")
     cep = input("Digite o CEP do usuário (somente números): ")
     integrantes[nome] = cep
     resposta = input("Deseja adicionar outro usuário? (s/n): ")
     if resposta.lower() != 's':
-        continuar = False
+        break
 
 for nome, cep in integrantes.items():
     url = f"https://viacep.com.br/ws/{cep}/json/"
