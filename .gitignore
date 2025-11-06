@@ -5,3 +5,5 @@
 venv/
 .venv/
 teste/
+.vscode
+.bashrc

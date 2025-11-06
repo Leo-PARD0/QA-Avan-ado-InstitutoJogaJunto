@@ -1,0 +1,5 @@
+O front-end, como o nome sugere, lida com a parte visível de um site ou aplicação. É tudo aquilo que o usuário vê e com o que interage diretamente, funcionando como uma ponte entre o usuário e o back-end, onde ficam as regras de negócio e o processamento dos dados.
+
+As principais tecnologias utilizadas no desenvolvimento front-end são HTML, CSS e JavaScript, que juntos formam a base de praticamente todas as interfaces web modernas.
+
+O HTML define a estrutura do conteúdo, o CSS é responsável pelo estilo e pela aparência visual das páginas, e o JavaScript adiciona interatividade, permitindo que o site responda às ações do usuário de forma dinâmica.
