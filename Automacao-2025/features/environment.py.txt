@@ -1,0 +1,15 @@
+from selenium.webdriver import Edge
+from selenium.webdriver.edge.options import Options
+
+def before_all(context):
+    options = Options()
+    options.add_argument("--start-maximized")
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_experimental_option("excludeSwitches", ["enable-logging"])
+    context.driver = Edge(options=options)
+
+def after_all(context):
+    try:
+        context.driver.quit()
+    except Exception:
+        pass
