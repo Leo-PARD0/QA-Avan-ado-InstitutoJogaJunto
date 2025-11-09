@@ -1,7 +1,0 @@
-Porque testes automatizados são ESSENCIAIS quando falamos de qualidade de software.
-
-Quando pensamos em um programa simples como uma calculadora, é comum pensarmos que os testes para saber se o programa está funcionando vão ser fáceis e rápidos. As vezes até descartamos a ideia de necessitar de testes, visto que qualquer problema no programa pode ser fácilmente encontrado com uma rápida lida no código.
-
-Contudo, quando falamos de programas mais complexos, com unidades separadas que interagem entre si, o erro em uma unidade pode quebrar o sistema todo, o que torna necessário testar todas as unidades a cada alteração do código.
-
-Agora, imagine fazer os testes de dezenas ou centenas de funcionalidades a cada nova funcionalidade implementada? A solução mais simples é criar um sistema de testes de maneira automática, fazendo com que cada unidade seja testada ao rodar um único comando e então, retornando quais unidades estão com erro e quais estão funcionando.
