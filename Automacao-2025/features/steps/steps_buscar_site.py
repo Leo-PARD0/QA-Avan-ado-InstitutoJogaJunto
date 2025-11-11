@@ -1,5 +1,3 @@
-
-#5️⃣6️⃣7️⃣8️⃣9️⃣🔟
 # ============================================================
 # 🧩 Importação das bibliotecas necessárias
 # ============================================================
@@ -25,8 +23,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys  
 # Permite simular o uso de teclas do teclado, como ENTER, TAB, SETA, etc.
 
-from selenium.webdriver.support.ui import WebDriverWait
-
 import time  
 # Biblioteca padrão do Python usada aqui para adicionar pausas (delays) entre as ações.
 # Isso garante que a página tenha tempo de carregar antes do próximo comando.
@@ -34,6 +30,7 @@ import time
 # ============================================================
 # 🧠 Definição dos passos do teste BDD (Gherkin)
 # ============================================================
+
 
 # ----------------------------------------
 # 1️⃣ Etapa "DADO QUE..."
@@ -65,13 +62,13 @@ def step_open_browser(context):
 # ----------------------------------------
 # 2️⃣ Etapa "QUANDO..."
 # ----------------------------------------
-@when('eu pesquisar por "WhatsApp Web" no Google')
+@when('eu pesquisar por "Instituto Joga Junto" no Google')
 def step_search_google(context):
     # Localiza o campo de busca do Google pelo atributo NAME="q"
     campo = context.driver.find_element(By.NAME, "q")
 
     # Digita o texto "Instituto Joga Junto" no campo de pesquisa
-    campo.send_keys("WhatsApp Web")
+    campo.send_keys("Instituto Joga Junto")
 
     # Pressiona a tecla ENTER para executar a busca
     campo.send_keys(Keys.RETURN)
@@ -83,7 +80,7 @@ def step_search_google(context):
 # ----------------------------------------
 # 3️⃣ Etapa "ENTÃO..."
 # ----------------------------------------
-@then("devo ver o site do WhatsApp aberto com sucesso")
+@then("devo ver o site do Instituto aberto com sucesso")
 def step_verify_site(context):
     # Captura todos os elementos que representam títulos de resultados (tags <h3>)
     resultados = context.driver.find_elements(By.CSS_SELECTOR, "h3")
@@ -98,78 +95,13 @@ def step_verify_site(context):
 
         # Verifica se a URL contém o termo "jogajunto"
         # Essa verificação confirma que o site do Instituto realmente foi acessado.
-        assert "web.whatsapp" in context.driver.current_url.lower()
+        assert "jogajunto" in context.driver.current_url.lower()
 
         # Exibe uma mensagem de sucesso no terminal
-        print("🌐 Site do WhatsApp Web aberto com sucesso!")
+        print("🌐 Site do Instituto Joga Junto aberto com sucesso!")
     else:
         # Caso nenhum resultado tenha sido encontrado, lança um erro de teste
         raise AssertionError("❌ Nenhum resultado encontrado.")
-    
-# ----------------------------------------
-# 4️⃣ Etapa "Verifica whtastapp"
-# ----------------------------------------
 
-@given("que estou na página do WhatsApp")
-def step_verify_whtastapp(context):
-    # gerar uma variável para armazenar a url
-    if hasattr(context, 'driver'): # se tem o atributo (has attribute) driver no contexto (se o objeto contexto tem o navegador)
-        url = context.driver.current_url.lower() # url será a url atual
-    else:
-        url = "" # caso não tenha, a url será vazia
-    # verificar se a url é a certa
-    if 'web.whatsapp' not in url: # caso a url não seja a do whtasapp
-        context.driver.get("https://web.whatsapp.com") # irá pesquisar diretamente pela do whatsapp
-    
-    input("Pressione enter para prosseguir...")
-
-    time.sleep(15) # aguarda 15 segundos para o site abrir completamente
-
-    print("🌐 Site do WhatsApp Web aberto com sucesso!")
-    
-@when('eu logar com QR code')
-def wait_login(context):
-    """
-    Aqui o script aguarda o usuário escanear o QR (ação manual).
-    Timeout padrão: 180 segundos — ajuste conforme sua necessidade.
-    """
-    print("📱 Por favor, escaneie o QR code com seu celular para fazer login no WhatsApp Web.")
-
-    """ 
-    # tira screenshot do QR (opcional, útil para evidência)
-    try:
-        context.driver.save_screenshot("evidence_qr.png")
-        print("📸 Screenshot do QR salva: evidence_qr.png")
-    except Exception:
-        print("⚠️ Não foi possível salvar screenshot do QR (ignorando).")
-    """
-
-    verificadores_login = 'div[contenteditable="true"][data-tab]'
-
-    timeout_total = 180
-    inicio = time.time()
-
-
-    while time.time() - inicio< timeout_total:
-        if context.driver.find_element(By.CSS_SELECTOR, verificadores_login):
-            print('Login detectado')
-        else:
-            raise AssertionError("❌ Timeout: login não detectado.")
-        
-
-@then('devo ver a userpage do WhatsApp Web')
-def verify_login(context):
-
-    verificadores_login = 'div[aria-label="Lista de conversas"][role="grid"]'
-
-    timeout_total = 180
-    inicio = time.time()
-
-
-    while time.time() - inicio< timeout_total:
-        if context.driver.find_element(By.CSS_SELECTOR, verificadores_login):
-            print('Login detectado')
-        else:
-            raise AssertionError("❌ Timeout: login não detectado.")
     # Encerra o navegador ao final do teste
     context.driver.quit()

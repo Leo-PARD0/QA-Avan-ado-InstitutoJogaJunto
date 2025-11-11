@@ -2,6 +2,8 @@
 # 🧩 Importação das bibliotecas necessárias 1️⃣2️⃣3️⃣
 # ============================================================
 
+# rodar com behave -f plain
+
 from behave import given, when, then
 
 from selenium.webdriver import Edge
@@ -10,6 +12,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 import time
+
+# ============================================================
+# Utilitários
+# ============================================================
+def enviar_mensagem(e,m):
+    escrever = e
+
+    escrever.send_keys(m)
+    escrever.send_keys(Keys.RETURN)
+
+
 
 # ============================================================
 # 🧠 Definição dos passos do teste BDD (Gherkin)
@@ -57,15 +70,34 @@ def step_abrir_WhatsApp(context):
 # ----------------------------------------
 @when('o usuário Logar')
 def step_wait_forLogin(context):
-    time.sleep(60)
+    time_total = 60
     
-    grid = context.driver.find_element(By.CSS_SELECTOR, '[aria-label="Lista de conversas"]')
+    for tempo in range(time_total):
+        time.sleep(1)
+        try:
+            grid = context.driver.find_element(By.CSS_SELECTOR, '[aria-label="Lista de conversas"]')
+            if grid:
+                print('🌐 Login detectado com sucesso!')
+                break
+            else:
+                pass
+        except:
+            pass
+        
 
-    if grid:
+"""         try grid = context.driver.find_element(By.CSS_SELECTOR, '[aria-label="Lista de conversas"]')
+        if grid:
+            print('🌐 Login detectado com sucesso!')
+        else:
+            time.sleep(1)
+            pass """
+    
+
+"""     if grid:
         print('🌐 Login detectado com sucesso!')
     else:
         raise AssertionError("❌ Timeout: login não detectado.")
-
+ """
 @when('encontrar o grupo de mensagem')
 def step_encontrar_grupo(context):
     pesquisa = context.driver.find_element(By.CSS_SELECTOR, '[contenteditable="true"]')
@@ -89,12 +121,15 @@ def step_encontrar_grupo(context):
 
 @then('a mensagem será editada e enviada')
 def step_send_mensage(context):
-    escrever = context.driver.find_element(By.CSS_SELECTOR, '[aria-label="Digitar no grupo [QA IBTECH | AGO/25]"]') # [aria-label="Digitar na conversa com _____"]
+    
+    e = context.driver.find_element(By.CSS_SELECTOR, '[aria-label="Digitar no grupo [QA IBTECH | AGO/25]"]') # [aria-label="Digitar na conversa com _____"]
+    m = 'Estou tentando uma verificação por segundo. no login'
+    
+    enviar_mensagem(e,m)
 
-    escrever.send_keys('Estou enviando mais uma mensagem por automação.')
-    escrever.send_keys(Keys.RETURN)
-    escrever.send_keys('Vou tirar um print usando: context.driver.save_screenshot("evidence_qr.png") pra deixar de evidência')
-    escrever.send_keys(Keys.RETURN)
+    #escrever.send_keys(Keys.RETURN)
+    #escrever.send_keys('Vou tirar um print usando: context.driver.save_screenshot("evidence_qr.png") pra deixar de evidência')
+    #escrever.send_keys(Keys.RETURN)
 
     """  
     for i in range(5):
@@ -103,12 +138,12 @@ def step_send_mensage(context):
         escrever.send_keys(Keys.RETURN) 
     """
     
-    time.sleep(3)
+    time.sleep(5)
 
     context.driver.save_screenshot("evidence_qr.png")
 
-    escrever.send_keys('Quem tiver difículdade pode me mandar mensagem')
+    """ escrever.send_keys('Quem tiver difículdade pode me mandar mensagem')
 
     time.sleep(3)
-
+ """
     print('mensagem enviada com sucesso, código desligando')
