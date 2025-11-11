@@ -54,7 +54,6 @@ def preencher_formulário(context):
             break
 
 
-    #forms['escolaridade'][1].click()
     forms['mensagem'].send_keys(dados['mensagem'])
     time.sleep(3)
 
